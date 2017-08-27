@@ -1,0 +1,33 @@
+{
+    "name": "asterisksyntaxhighlighter",
+    "displayName": "Asterisk Syntax Highlighter",
+    "description": "Syntax highlighting for Asterisk dialplan",
+    "version": "1.0.0",
+    "publisher": "peacefixation",
+    "engines": {
+        "vscode": "^1.13.0"
+    },
+    "categories": [
+        "Languages",
+        "Snippets"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "asterisk",
+            "aliases": ["Asterisk", "asterisk"],
+            "extensions": [".conf"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "asterisk",
+            "scopeName": "source.asterisk",
+            "path": "./syntaxes/asterisk.tmLanguage"
+        }],
+        "snippets": [
+            {
+                "language": "asterisk",
+                "path": "./snippets/snippets.json"
+            }
+        ]
+    }
+}

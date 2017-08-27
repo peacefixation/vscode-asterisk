@@ -1,0 +1,9 @@
+{
+    "Extension": {
+        "prefix": "e",
+        "body": [
+            "exten => ${1:_X.},${2:n},${3}(${4})"
+        ],
+        "description": "New extension"
+    }
+}

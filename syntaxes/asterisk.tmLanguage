@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>fileTypes</key>
+		<array>
+			<string>.conf</string>
+		</array>
+		<key>name</key>
+		<string>asterisk</string>
+		<key>patterns</key>
+		<array>
+
+			<!--File includes-->
+			<dict>
+				<key>match</key>
+				<string>^#include</string>
+				<key>name</key>
+				<string>keyword.control.import</string>
+			</dict>
+
+			<!--Contexts-->
+			<dict>
+				<key>match</key>
+				<string>^\[[\w\d_-]+\]((\(\!\))|(\([\w\d_-]+(\,[\w\d_-]+)?\)))?\s*$</string>
+				<key>name</key>
+				<string>entity.name.class</string>
+			</dict>
+
+			<!--Context includes-->
+			<dict>
+				<key>match</key>
+				<string>^(include =>)\s+([\w\d_-]+)</string>
+				<key>captures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.other</string>
+					</dict>
+
+					<key>2</key>
+					<dict>
+						<key>name</key>
+						<string>entity.name.class</string>
+					</dict>
+				</dict>
+			</dict>
+
+			<!--Extension declaration, patterns, priorities and priority labels-->
+			<dict>
+				<key>match</key>
+				<string>(^exten =>)( (_[NXZ\d\w\[\]*#\-.!]*|[ahiostT]|[\d\w*#]+|failed|fax|talk)(,([sn]|\d+|\w+\s*\+\s*\d+|hint)\b(\(([\w\d_-]+)\))?)?)?</string>
+				<key>captures</key>
+				<dict>
+					<!-- Extension declaration -->
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.other</string>
+					</dict>
+
+					<!-- Extension pattern -->
+					<key>3</key>
+					<dict>
+						<key>name</key>
+						<string>constant.regexp</string>
+					</dict>
+
+					<!-- Priority -->
+					<key>5</key>
+					<dict>
+						<key>name</key>
+						<string>constant.numeric</string>
+					</dict>
+
+					<!-- Priority label -->
+					<key>7</key>
+					<dict>
+						<key>name</key>
+						<string>constant.numeric</string>
+					</dict>
+				</dict>
+			</dict>
+
+			<!--Applications-->
+			<dict>
+				<key>match</key>
+				<string>\b(AbsoluteTimeout|AddQueueMember|ADSIProg|AgentCallbackLogin|AgentLogin|AgentMonitorOutgoing|AGI|AlarmReceiver|ALSAMonitor|Answer|AMD|AppendCDRUserField|Authenticate|BackGround|BackgroundDetect|AsteriskcmdBridge|Busy|CallingPres|ChangeMonitor|ChanIsAvail|ChannelRedirect|ChanSpy|CheckGroup|Congestion|ControlPlayback|DBdel|DBdeltree|DBQuery|DBRewrite|DeadAGI|Dial|Dictate|DigitTimeout|Directory|DISA|DTMFToText|DUNDiLookup|EAGI|Echo|EnumLookup|ExtenSpy|Festival|Flash|Flite|ForkCDR|GetCPEID|GetGroupCount|GetGroupMatchCount|Gosub|GosubIf|Goto|GotoIf|GotoIfTime|Hangup|HasNewVoicemail|AsteriskcmdHasVoicemail|ICES|ImportVar|JabberStatus|JabberSend|LookupBlacklist|LookupCIDName|Macro|MacroExclusive|AsteriskcmdMacroExit|MailboxExists|MeetMe|MeetMeAdmin|MeetMeCount|Milliwatt|AsteriskcmdMiniVM|MixMonitor|Monitor|MP3Player|MusicOnHold|MYSQL|AsteriskcmgNBScat|NoCDR|NoOp|Page|ParkAndAnnounce|ParkedCall|PauseQueueMember|Perl|AsteriskcmdPickup|PickUP|Playback|Playtones|PPPD|PrivacyManager|Progress|Queue|Read|RealTime|Record|RemoveQueueMember|ResetCDR|ResponseTimeout|RetryDial|Return|Ringing|Rpt|SayAlpha|SayDigits|SayNumber|SayPhonetic|SayUnixTime|SendDTMF|SendImage|SendText|SendURL|Set|SetAccount|SetAMAflags|SetCallerID|SetCallerPres|SetCDRUserField|SetGlobalVar|SetVar|SIPAddHeader|SIPCallPickup|SIPGetHeader|SIPdtmfMode|SMS|SoftHangup|SrxEchoCan|SrxDeflect|SrxMWI|Steal|StackPop|StopMonitor|StopPlaytones|System|Transfer|TestClient|TestServer|TrySystem|TXTCIDName|UnpauseQueueMember|UserEvent|VMAuthenticate|VoiceMail|VoiceMailMain|Wait|WaitExten|WaitForRing|WaitMusicOnHold|Zapateller|ZapBarge|ZapSendKeypadFacility|ZapRAS|ZapScan)\b</string>
+				<key>name</key>
+				<string>support.function.application</string>
+			</dict>
+
+			<!--Functions with nested variables and functions -->
+			<dict>
+				<key>include</key>
+				<string>#FunctionNested</string>
+			</dict>
+
+			<!--Expressions-->
+			<dict>
+				<key>include</key>
+				<string>#Expressions</string>
+			</dict>
+
+			<!-- Operators -->
+			<dict>
+				<key>include</key>
+				<string>#Operators</string>
+			</dict>
+
+			<!-- Variable assignment -->
+			<dict>
+				<key>include</key>
+				<string>#Variable</string>
+			</dict>
+
+			<!--Variables with nested functions and variables -->
+			<dict>
+				<key>include</key>
+				<string>#VariableNested</string>
+			</dict>
+
+			<!--Quoted strings-->
+			<dict>
+				<key>include</key>
+				<string>#QuotedString</string>
+			</dict>
+
+			<!--Comments-->
+			<dict>
+				<key>begin</key>
+				<string>(?<!\\);</string>
+				<key>end</key>
+				<string>\n</string>
+				<key>name</key>
+				<string>comment.line</string>
+			</dict>
+		</array>
+
+		<key>repository</key>
+		<dict>
+	
+			<key>EscapedCharacter</key>
+			<dict>
+				<key>match</key>
+				<string>\\.</string>
+				<key>name</key>
+				<string>constant.character.escape.untitled</string>
+			</dict>
+
+			<key>ExpressionOperators</key>
+			<dict>
+				<key>match</key>
+				<string>=~|[!<>]=|[<>=+\-*\/%|&amp;:]</string>
+				<key>name</key>
+				<string>keyword.control</string>
+			</dict>
+
+			<!-- Quoted strings with nested variables -->
+			<key>QuotedString</string>
+			<dict>
+				<key>begin</key>
+				<string>(")</string>
+				<key>beginCaptures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>string.quoted.double</string>
+					</dict>
+				</dict>
+				<key>end</key>
+				<string>(")</key>
+				<key>endCaptures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>string.quoted.double</string>
+					</dict>
+				</dict>
+				<key>patterns</key>
+				<array>
+					<dict>
+						<key>include</key>
+						<string>#EscapedCharacter</string>
+					</dict>
+					<dict>
+						<key>include</key>
+						<string>#VariableNested</string>
+					</dict>
+					<dict>
+						<key>match</key>
+						<string>[^"]</string>
+						<key>name</key>
+						<string>string.quoted.double</string>
+					</dict>
+				</array>
+			</dict>
+
+			<!-- Variable assignment -->
+			<key>Variable</key>
+			<dict>
+				<key>match</key>
+				<string>[\w\d_-]+(?=\=)</string>
+				<key>name</key>
+				<string>variable.other</string>
+			</dict>
+
+			<!--Variables with nested functions and variables -->
+			<key>VariableNested</key>
+			<dict>
+				<key>begin</key>
+				<string>(\$\{)</string>
+				<key>beginCaptures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>variable</string>
+					</dict>
+				</dict>
+				<key>end</key>
+				<string>(\})</string>
+				<key>endCaptures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>variable</string>
+					</dict>
+				</dict>
+				<key>patterns</key>
+				<array>
+					<dict>
+						<key>include</key>
+						<string>#FunctionNested</string>
+					</dict>
+					<dict>
+						<key>include</key>
+						<string>$self</string>
+					</dict>
+					<dict>
+						<key>match</key>
+						<string>[^}]</string>
+						<key>name</key>
+						<string>variable</string>
+					</dict>
+				</array>
+			</dict>
+
+			<!--Functions with nested variables and functions -->
+			<key>FunctionNested</key>
+			<dict>
+				<key>begin</key>
+				<string>(AES_DECRYPT|AES_ENCRYPT|AGC|AGENT|ARRAY|AST_CONFIG|AUDIOHOOK_INHERIT|BASE64_DECODE|BASE64_ENCODE|BLACKLIST|CALLERID|CALLERPRES|CDR|CHANNEL|CHANNELS|CHECKSIPDOMAIN|CHECK_MD5|CLEARHASH|CONFBRIDGE|CONFBRIDGE_INFO|CONNECTEDLINE|CSV_QUOTE|CURLOPT|CURL|CUT|DB_DELETE|DB_EXISTS|DB|DENOISE|DEVICE_STATE|DIALGROUP|DIALPLAN_EXISTS|DUNDILOOKUP|DUNDIQUERY|DUNDIRESULT|ENUMLOOKUP|ENUMQUERY|ENUMRESULT|ENV|EVAL|EXCEPTION|EXISTS|EXTENSION_STATE|FIELDQTY|FILE|FILTER|GETCODEC|GROUP_COUNT|GROUP_LIST|GROUP_MATCH_COUNT|GROUP|HASHKEYS|HASH|HINT|IAXCHANINFO|IAXPEER|IAXVAR|IFMODULE|IFTIME|IF|IMPORT|INC|ISNULL|JACK_HOOK|KEYPADHASH|LANGUAGE|LEN|LOCAL|LOCK|MATH|MD5|MUSICCLASS|ODBC|QUEUEAGENTCOUNT|QUEUE_MEMBER_COUNT|QUEUE_MEMBER_LIST|QUEUE_WAITING_COUNT|QUOTE|RAND|REALTIME|REGEX|REPLACE|SET|SHA1|SHARED|SHELL|SIPCHANINFO|SIPPEER|SIPADDHEADER|SIP_HEADER|SORT|SQL_ESC|STAT|STRFTIME|STRPTIME|SYSINFO|TIMEOUT|TOUPPER|TOLOWER|TRYLOCK|TXTCIDNAME|UNLOCK|URIDECODE|URIENCODE|VOLUME|VMCOUNT|DEC)(\()</string>
+				<key>beginCaptures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>entity.name.function</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>name</key>
+						<string>punctuation.section.parens.begin</string>
+					</dict>
+				</dict>
+				<key>end</key>
+				<string>(\))</string>
+				<key>endCaptures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>punctuation.section.parens.end</string>
+					</dict>
+				</dict>
+				<key>patterns</key>
+				<array>
+					<dict>
+						<key>include</key>
+						<string>#VariableNested</string>
+					</dict>
+					<dict>
+						<key>include</key>
+						<string>#Expressions</string>
+					</dict>
+					<dict>
+						<key>include</key>
+						<string>$self</string>
+					</dict>
+					<dict>
+						<key>match</key>
+						<string>[^|,)]</string>
+						<key>name</key>
+						<string>entity.name.argument</string>
+					</dict>
+				</array>
+			</dict>
+
+			<!-- Expressions with nested quoted strings, variables and functions -->
+			<key>Expressions</key>
+			<dict>
+				<key>begin</key>
+				<string>(\$\[)</string>
+				<key>beginCaptures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.control</string>
+					</dict>
+				</dict>
+				<key>end</key>
+				<string>(\])</string>
+				<key>endCaptures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.control</string>
+					</dict>
+				</dict>
+				<key>patterns</key>
+				<array>
+					<dict>
+						<key>include</key>
+						<string>#ExpressionOperators</string>
+					</dict>
+					<dict>
+						<key>include</key>
+						<string>#EscapedCharacter</string>
+					</dict>
+					<dict>
+						<key>include</key>
+						<string>#QuotedString</string>
+					</dict>
+					<dict>
+						<key>include</key>
+						<string>#VariableNested</string>
+					</dict>
+					<dict>
+						<key>include</key>
+						<string>#FunctionNested</string>
+					</dict>
+					<dict>
+						<key>include</key>
+						<string>$self</string>
+					</dict>
+				</array>
+			</dict>
+
+			<!-- Operators -->
+			<key>Operators</key>
+			<dict>
+				<key>match</key>
+				<string>[?:]|[=](?!>)</string>
+				<key>name</key>
+				<string>keyword.control</string>
+			</dict>
+		</dict>
+
+		<key>scopeName</key>
+		<string>source.asterisk</string>
+		<key>uuid</key>
+		<string>BF0E3626-65E6-11E7-907B-A6006AD3DBA0</string>
+	</dict>
+</plist>
