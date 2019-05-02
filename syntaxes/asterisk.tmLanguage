@@ -83,6 +83,35 @@
 				</dict>
 			</dict>
 
+			<!-- 'same' keywords continues an extension declaration with priorities and priority labels-->
+			<dict>
+				<key>match</key>
+				<string>(^same  =>?)(\s+(n|\d+)\b(\(([\w\d_-]+)\))?)?</string>
+				<key>captures</key>
+				<dict>
+					<!-- Continues an extension declaration -->
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.other</string>
+					</dict>
+
+					<!-- Priority -->
+					<key>2</key>
+					<dict>
+						<key>name</key>
+						<string>constant.numeric</string>
+					</dict>
+
+					<!-- Priority label -->
+					<key>5</key>
+					<dict>
+						<key>name</key>
+						<string>constant.character</string>
+					</dict>
+				</dict>
+			</dict>
+
 			<!--Applications-->
 			<dict>
 				<key>match</key>
