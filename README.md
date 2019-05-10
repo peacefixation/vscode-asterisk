@@ -13,15 +13,3 @@ Snippets:
 ## Known Issues
 
 No support for AEL/AEL2.
-
-## Release Notes
-
-### 1.0.2
-
-Added support for same =>  
-Allow ":" character in extension pattern  
-Fixed issue where special extension regex could partially match a custom extension  
-
-### 1.0.0
-
-Initial release.
