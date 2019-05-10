@@ -97,7 +97,7 @@
 					</dict>
 
 					<!-- Priority -->
-					<key>2</key>
+					<key>3</key>
 					<dict>
 						<key>name</key>
 						<string>constant.numeric</string>
