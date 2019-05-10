@@ -29,5 +29,9 @@
                 "path": "./snippets/snippets.json"
             }
         ]
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/peacefixation/vscode-asterisk.git"
+      }
 }
