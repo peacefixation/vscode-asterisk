@@ -8,7 +8,7 @@
         "vscode": "^1.13.0"
     },
     "categories": [
-        "Languages",
+        "Programming Languages",
         "Snippets"
     ],
     "contributes": {
