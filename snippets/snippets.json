@@ -2,14 +2,14 @@
     "Extension": {
         "prefix": "e",
         "body": [
-            "exten => ${1:_X.},${2:n},${3}(${4})"
+            "exten = ${1:_X.},${2:n},${3}(${4})"
         ],
         "description": "New extension"
     },
     "Same": {
         "prefix": "s",
         "body": [
-            "same  => ${1:n},${2}(${3})"
+            " same  = ${1:n},${2}(${3})"
         ],
         "description": "Same extension"
     }
