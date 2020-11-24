@@ -86,7 +86,7 @@
 			<!-- 'same' keywords continues an extension declaration with priorities and priority labels-->
 			<dict>
 				<key>match</key>
-				<string>(^same\s+=>?)(\s+(n|\d+)\b(\(([\w\d_-]+)\))?)?</string>
+				<string>(^\s?same\s+=>?)(\s+(n|\d+)\b(\(([\w\d_-]+)\))?)?</string>
 				<key>captures</key>
 				<dict>
 					<!-- Continues an extension declaration -->
