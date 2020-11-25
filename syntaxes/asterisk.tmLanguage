@@ -57,7 +57,7 @@
 					<key>1</key>
 					<dict>
 						<key>name</key>
-						<string>keyword.name</string>
+						<string>keyword.other</string>
 					</dict>
 
 					<!-- Extension pattern -->
@@ -78,7 +78,7 @@
 					<key>7</key>
 					<dict>
 						<key>name</key>
-						<string>support.constant</string>
+						<string>constant.numeric</string>
 					</dict>
 				</dict>
 			</dict>
@@ -107,7 +107,7 @@
 					<key>5</key>
 					<dict>
 						<key>name</key>
-						<string>support.constant</string>
+						<string>constant.numeric</string>
 					</dict>
 				</dict>
 			</dict>
