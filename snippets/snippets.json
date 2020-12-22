@@ -12,5 +12,19 @@
             "same  => ${1:n},${2}(${3})"
         ],
         "description": "Same extension"
+    },
+    "ExtensionNew": {
+        "prefix": "en",
+        "body": [
+            "exten = ${1:_X.},${2:n},${3}(${4})"
+        ],
+        "description": "New extension in new format"
+    },
+    "SameNew": {
+        "prefix": "sn",
+        "body": [
+            " same = ${1:n},${2}(${3})"
+        ],
+        "description": "Same extension in new format"
     }
 }
