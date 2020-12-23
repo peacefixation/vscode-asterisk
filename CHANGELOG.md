@@ -4,6 +4,9 @@ All notable changes to the "asterisksyntaxhighlighter" extension will be documen
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.1.3] - 2020/12/23
+- Fixed quoted string match
+
 ## [1.1.2] - 2020/12/22
 - Added ConfBridge, ExecIf, SetMusicOnHold, StopMixMonitor and Verbose applications
 - Removed 'Asterismcmd' prefix from Bridge, HasVoicemail, MacroExit, MiniVM, and Pickup applications
