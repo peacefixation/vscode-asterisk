@@ -187,7 +187,7 @@
 			</dict>
 
 			<!-- Quoted strings with nested variables -->
-			<key>QuotedString</string>
+			<key>QuotedString</key>
 			<dict>
 				<key>begin</key>
 				<string>(")</string>
@@ -200,7 +200,7 @@
 					</dict>
 				</dict>
 				<key>end</key>
-				<string>(")</key>
+				<string>(")</string>
 				<key>endCaptures</key>
 				<dict>
 					<key>1</key>
