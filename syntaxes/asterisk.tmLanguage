@@ -11,7 +11,7 @@
 		<key>patterns</key>
 		<array>
 
-			<!--File includes-->
+			<!-- File includes -->
 			<dict>
 				<key>match</key>
 				<string>^#include</string>
@@ -19,18 +19,18 @@
 				<string>keyword.control.import</string>
 			</dict>
 
-			<!--Contexts-->
+			<!-- Contexts / Templates -->
 			<dict>
 				<key>match</key>
-				<string>^\[[\w\d_-]+\]((\(\!\))|(\([\w\d_-]+(\,[\w\d_-]+)?\)))?\s*$</string>
+				<string>^(\[[\w\d_-]+\])(\([!+\[\]\w\d\-_,=*&.]+\))?</string>
 				<key>name</key>
 				<string>entity.name.class</string>
 			</dict>
 
-			<!--Context includes-->
+			<!-- Context includes -->
 			<dict>
 				<key>match</key>
-				<string>^(include =>?)\s+([\w\d_-]+)</string>
+				<string>^(include\s+=>?)\s+([\w\d_-]+)</string>
 				<key>captures</key>
 				<dict>
 					<key>1</key>
@@ -47,10 +47,30 @@
 				</dict>
 			</dict>
 
-			<!--Extension declaration, patterns, priorities and priority labels-->
+			<!-- Module configuration -->
 			<dict>
 				<key>match</key>
-				<string>(^exten\s+=>?)( (_\+?[NXZ\d\w\[\]*#\-.!]*|\+?[\d\w:*#]+|[ahiostT]|failed|fax|talk)(,([sn]|\d+|\w+\s*\+\s*\d+|hint)\b(\(([\w\d_-]+)\))?)?)?</string>
+				<string>^((?:load|noload|preload|preload-require|require)\s+=>?)\s+([\w\d\-_.]+)</string>
+				<key>captures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.other</string>
+					</dict>
+
+					<key>2</key>
+					<dict>
+						<key>name</key>
+						<string>entity.name.class</string>
+					</dict>
+				</dict>
+			</dict>
+
+			<!-- Extension declaration, patterns, priorities and priority labels -->
+			<dict>
+				<key>match</key>
+				<string>(^exten\s+=>?)( (_\+?[NXZ\d\w\[\]*#+\-.!]*|\+?[\d\w\-:*#]+|[ahiostT]|failed|fax|talk)(,([sn]|\d+|\w+\s*\+\s*\d+|hint)\b(\(([\w\d_-]+)\))?)?)?</string>
 				<key>captures</key>
 				<dict>
 					<!-- Extension declaration -->
@@ -83,7 +103,7 @@
 				</dict>
 			</dict>
 
-			<!-- 'same' keywords continues an extension declaration with priorities and priority labels-->
+			<!-- 'same' keywords continues an extension declaration with priorities and priority labels -->
 			<dict>
 				<key>match</key>
 				<string>(^\s?same\s+=>?)(\s+(n|\d+)\b(\(([\w\d_-]+)\))?)?</string>
@@ -112,21 +132,21 @@
 				</dict>
 			</dict>
 
-			<!--Applications-->
+			<!-- Applications -->
 			<dict>
 				<key>match</key>
-				<string>\b(AbsoluteTimeout|AddQueueMember|ADSIProg|AgentCallbackLogin|AgentLogin|AgentMonitorOutgoing|AGI|AlarmReceiver|ALSAMonitor|Answer|AMD|AppendCDRUserField|Authenticate|BackGround|BackgroundDetect|Bridge|Busy|CallingPres|ChangeMonitor|ChanIsAvail|ChannelRedirect|ChanSpy|CheckGroup|Congestion|ConfBridge|ControlPlayback|DBdel|DBdeltree|DBQuery|DBRewrite|DeadAGI|Dial|Dictate|DigitTimeout|Directory|DISA|DTMFToText|DUNDiLookup|EAGI|Echo|EndWhile|EnumLookup|ExecIf|ExtenSpy|Festival|Flash|Flite|ForkCDR|GetCPEID|GetGroupCount|GetGroupMatchCount|Gosub|GosubIf|Goto|GotoIf|GotoIfTime|Hangup|HasNewVoicemail|HasVoicemail|ICES|ImportVar|JabberStatus|JabberSend|LookupBlacklist|LookupCIDName|Macro|MacroExclusive|MacroExit|MailboxExists|MeetMe|MeetMeAdmin|MeetMeCount|Milliwatt|MiniVM|MixMonitor|Monitor|MP3Player|MusicOnHold|MYSQL|AsteriskcmgNBScat|NoCDR|NoOp|Page|ParkAndAnnounce|ParkedCall|PauseQueueMember|Perl|Pickup|PickUP|Playback|Playtones|PPPD|PrivacyManager|Progress|Queue|Read|RealTime|Record|RemoveQueueMember|ResetCDR|ResponseTimeout|RetryDial|Return|Ringing|Rpt|SayAlpha|SayDigits|SayNumber|SayPhonetic|SayUnixTime|SendDTMF|SendImage|SendText|SendURL|Set|SetAccount|SetAMAflags|SetCallerID|SetCallerPres|SetCDRUserField|SetGlobalVar|SetVar|SIPAddHeader|SIPCallPickup|SIPGetHeader|SIPdtmfMode|SMS|SoftHangup|SrxEchoCan|SrxDeflect|SrxMWI|Steal|StackPop|StopMixMonitor|StopMonitor|StopPlaytones|System|Transfer|TestClient|TestServer|TrySystem|TXTCIDName|UnpauseQueueMember|UserEvent|Verbose|VMAuthenticate|VoiceMail|VoiceMailMain|Wait|WaitExten|WaitForRing|WaitMusicOnHold|While|Zapateller|ZapBarge|ZapSendKeypadFacility|ZapRAS|ZapScan)\b</string>
+				<string>\b(ADSIProg|AELSub|AGI|AMD|AddQueueMember|AgentLogin|AgentRequest|AlarmReceiver|Answer|AttendedTransfer|AudioSocket|Authenticate|BackGround|BackgroundDetect|BlindTransfer|Bridge|BridgeAdd|BridgeWait|Broadcast|Busy|CELGenUserEvent|CallCompletionCancel|CallCompletionRequest|ChanIsAvail|ChanSpy|ChangeMonitor|ChannelRedirect|ClearHash|ConfBridge|ConfKick|Congestion|ContinueWhile|ControlPlayback|DAHDIAcceptR2Call|DAHDIRAS|DAHDIScan|DAHDISendCallreroutingFacility|DAHDISendKeypadFacility|DBdeltree|DISA|DateTime|DeadAGI|Dial|Dictate|Directory|DumpChan|EAGI|Echo|Else|ElseIf|EndIf|EndWhile|Exec|ExecIf|ExecIfTime|ExitIf|ExitWhile|ExtenSpy|ExternalIVR|Festival|Flash|FollowMe|ForkCDR|GetCPEID|Gosub|GosubIf|Goto|GotoIf|GotoIfTime|Hangup|HangupCauseClear|IAX2Provision|ICES|IVRDemo|If|ImportVar|Incomplete|JACK|JabberJoin|JabberLeave|JabberSend|JabberSendGroup|JabberStatus|Log|MP3Player|MSet|Macro|MacroExclusive|MacroExit|MacroIf|MailboxExists|MeetMe|MeetMeAdmin|MeetMeChannelAdmin|MeetMeCount|MessageSend|Milliwatt|MinivmAccMess|MinivmDelete|MinivmGreet|MinivmMWI|MinivmNotify|MinivmRecord|MixMonitor|Monitor|Morsecode|MusicOnHold|NBScat|NoCDR|NoOp|ODBCFinish|ODBC_Commit|ODBC_Rollback|OSPAuth|OSPFinish|OSPLookup|OSPNext|Originate|PJSIPHangup|PJSIPNotify|Page|Park|ParkAndAnnounce|ParkedCall|PauseMonitor|PauseQueueMember|Pickup|PickupChan|PlayTones|Playback|PrivacyManager|Proceeding|Progress|Queue|QueueLog|QueueUpdate|RaiseException|Read|ReadExten|ReceiveFAX|ReceiveMF|ReceiveSF|ReceiveText|Record|Reload|RemoveQueueMember|ResetCDR|RetryDial|Return|Ringing|SIPAddHeader|SIPDtmfMode|SIPRemoveHeader|SIPSendCustomINFO|SLAStation|SLATrunk|SMS|SayAlpha|SayAlphaCase|SayCountedAdj|SayCountedNoun|SayDigits|SayMoney|SayNumber|SayOrdinal|SayPhonetic|SayUnixTime|SendDTMF|SendFAX|SendImage|SendMF|SendSF|SendText|SendURL|Set|SetAMAFlags|Signal|SkelGuessNumber|SoftHangup|SpeechActivateGrammar|SpeechBackground|SpeechCreate|SpeechDeactivateGrammar|SpeechDestroy|SpeechLoadGrammar|SpeechProcessingSound|SpeechStart|SpeechUnloadGrammar|StackPop|StartMusicOnHold|Stasis|StatsD|StopMixMonitor|StopMonitor|StopMusicOnHold|StopPlayTones|StoreDTMF|StreamEcho|System|TestClient|TestServer|ToneScan|Transfer|TryExec|TrySystem|UnpauseMonitor|UnpauseQueueMember|UserEvent|VMAuthenticate|VMSayName|Verbose|VoiceMail|VoiceMailMain|VoiceMailPlayMsg|Wait|WaitDigit|WaitExten|WaitForCondition|WaitForNoise|WaitForRing|WaitForSignal|WaitForSilence|WaitForTone|WaitUntil|While|Zapateller)\b</string>
 				<key>name</key>
 				<string>support.function.application</string>
 			</dict>
 
-			<!--Functions with nested variables and functions -->
+			<!-- Functions with nested variables and functions -->
 			<dict>
 				<key>include</key>
 				<string>#FunctionNested</string>
 			</dict>
 
-			<!--Expressions-->
+			<!-- Expressions -->
 			<dict>
 				<key>include</key>
 				<string>#Expressions</string>
@@ -144,19 +164,27 @@
 				<string>#Variable</string>
 			</dict>
 
-			<!--Variables with nested functions and variables -->
+			<!-- Variables with nested functions and variables -->
 			<dict>
 				<key>include</key>
 				<string>#VariableNested</string>
 			</dict>
 
-			<!--Quoted strings-->
+			<!-- Quoted strings -->
 			<dict>
 				<key>include</key>
 				<string>#QuotedString</string>
 			</dict>
 
-			<!--Comments-->
+			<!-- Comments -->
+			<dict>
+				<key>begin</key>
+				<string>(?<!\\);--</string>
+				<key>end</key>
+				<string>--;</string>
+				<key>name</key>
+				<string>comment.block</string>
+			</dict>
 			<dict>
 				<key>begin</key>
 				<string>(?<!\\);</string>
@@ -232,12 +260,12 @@
 			<key>Variable</key>
 			<dict>
 				<key>match</key>
-				<string>[\w\d_-]+(?=\=)</string>
+				<string>[\w\d_-]+(?=\s?\=)</string>
 				<key>name</key>
 				<string>variable.other</string>
 			</dict>
 
-			<!--Variables with nested functions and variables -->
+			<!-- Variables with nested functions and variables -->
 			<key>VariableNested</key>
 			<dict>
 				<key>begin</key>
@@ -279,11 +307,11 @@
 				</array>
 			</dict>
 
-			<!--Functions with nested variables and functions -->
+			<!-- Functions with nested variables and functions -->
 			<key>FunctionNested</key>
 			<dict>
 				<key>begin</key>
-				<string>(AES_DECRYPT|AES_ENCRYPT|AGC|AGENT|ARRAY|AST_CONFIG|AUDIOHOOK_INHERIT|BASE64_DECODE|BASE64_ENCODE|BLACKLIST|CALLERID|CALLERPRES|CDR|CHANNEL|CHANNELS|CHECKSIPDOMAIN|CHECK_MD5|CLEARHASH|CONFBRIDGE|CONFBRIDGE_INFO|CONNECTEDLINE|CSV_QUOTE|CURLOPT|CURL|CUT|DB_DELETE|DB_EXISTS|DB|DENOISE|DEVICE_STATE|DIALGROUP|DIALPLAN_EXISTS|DUNDILOOKUP|DUNDIQUERY|DUNDIRESULT|ENUMLOOKUP|ENUMQUERY|ENUMRESULT|ENV|EVAL|EXCEPTION|EXISTS|EXTENSION_STATE|FIELDQTY|FILE|FILTER|GETCODEC|GROUP_COUNT|GROUP_LIST|GROUP_MATCH_COUNT|GROUP|HASHKEYS|HASH|HINT|IAXCHANINFO|IAXPEER|IAXVAR|IFMODULE|IFTIME|IF|IMPORT|INC|ISNULL|JACK_HOOK|KEYPADHASH|LANGUAGE|LEN|LOCAL|LOCK|MATH|MD5|MUSICCLASS|ODBC|QUEUEAGENTCOUNT|QUEUE_MEMBER_COUNT|QUEUE_MEMBER_LIST|QUEUE_WAITING_COUNT|QUOTE|RAND|REALTIME|REGEX|REPLACE|SET|SHA1|SHARED|SHELL|SIPCHANINFO|SIPPEER|SIPADDHEADER|SIP_HEADER|SORT|SQL_ESC|STAT|STRFTIME|STRPTIME|SYSINFO|TIMEOUT|TOUPPER|TOLOWER|TRYLOCK|TXTCIDNAME|UNLOCK|URIDECODE|URIENCODE|VOLUME|VMCOUNT|DEC)(\()</string>
+				<string>((ABS|AES_DECRYPT|AES_ENCRYPT|AGC|AGENT|AMI_CLIENT|ARRAY|AST_CONFIG|AST_SORCERY|BASE64_DECODE|BASE64_ENCODE|BASENAME|BLACKLIST|CALENDAR_BUSY|CALENDAR_EVENT|CALENDAR_QUERY|CALENDAR_QUERY_RESULT|CALENDAR_WRITE|CALLCOMPLETION|CALLERID|CALLERPRES|CDR|CDR_PROP|CHANNEL|CHANNELS|CHANNEL_EXISTS|CHECKSIPDOMAIN|CONFBRIDGE|CONFBRIDGE_CHANNELS|CONFBRIDGE_INFO|CONNECTEDLINE|CSV_QUOTE|CURL|CURLOPT|CUT|DB|DB_DELETE|DB_EXISTS|DB_KEYCOUNT|DB_KEYS|DEC|DELETE|DENOISE|DEVICE_STATE|DIALGROUP|DIALPLAN_EXISTS|DIRNAME|DUNDILOOKUP|DUNDIQUERY|DUNDIRESULT|ENUMLOOKUP|ENUMQUERY|ENUMRESULT|ENV|EVAL|EVAL_EXTEN|EVAL_SUB|EXCEPTION|EXISTS|EXPORT|EXTENSION_STATE|FAXOPT|FEATURE|FEATUREMAP|FIELDNUM|FIELDQTY|FILE|FILE_COUNT_LINE|FILE_FORMAT|FILTER|FRAME_DROP|FRAME_TRACE|GEOLOC_PROFILE|GLOBAL|GLOBAL_DELETE|GLOBAL_EXISTS|GROUP|GROUP_COUNT|GROUP_LIST|GROUP_MATCH_COUNT|HANGUPCAUSE|HANGUPCAUSE_KEYS|HASH|HASHKEYS|HINT|HOLD_INTERCEPT|IAXPEER|IAXVAR|ICONV|IF|IFMODULE|IFTIME|IMPORT|INC|ISNULL|JABBER_RECEIVE|JABBER_STATUS|JITTERBUFFER|JSON_DECODE|KEYPADHASH|LEN|LISTFILTER|LOCAL|LOCAL_PEEK|LOCK|LOG_GROUP|LTRIM|MAILBOX_EXISTS|MASTER_CHANNEL|MATH|MAX|MD5|MEETME_INFO|MESSAGE|MESSAGE_DATA|MIN|MINIVMACCOUNT|MINIVMCOUNTER|MIXMONITOR|MUTEAUDIO|ODBC|ODBC_FETCH|PARK_GET_CHANNEL|PASSTHRU|PERIODIC_HOOK|PITCH_SHIFT|PJSIP_AOR|PJSIP_CONTACT|PJSIP_DIAL_CONTACTS|PJSIP_DTMF_MODE|PJSIP_ENDPOINT|PJSIP_HEADER|PJSIP_HEADERS|PJSIP_HEADER_PARAM|PJSIP_MEDIA_OFFER|PJSIP_MOH_PASSTHROUGH|PJSIP_PARSE_URI|PJSIP_PARSE_URI_FROM|PJSIP_RESPONSE_HEADER|PJSIP_RESPONSE_HEADERS|PJSIP_SEND_SESSION_REFRESH|PJSIP_TRANSFER_HANDLING|POLARITY|POP|PP_EACH_EXTENSION|PP_EACH_USER|PRESENCE_STATE|PUSH|QUEUE_EXISTS|QUEUE_GET_CHANNEL|QUEUE_MEMBER|QUEUE_MEMBER_COUNT|QUEUE_MEMBER_LIST|QUEUE_MEMBER_PENALTY|QUEUE_VARIABLES|QUEUE_WAITING_COUNT|QUOTE|RAND|REALTIME|REALTIME_DESTROY|REALTIME_FIELD|REALTIME_HASH|REALTIME_STORE|RECORDING_INFO|REDIRECTING|REGEX|REPLACE|RTRIM|SAYFILES|SCRAMBLE|SET|SHA1|SHARED|SHELL|SHIFT|SIPPEER|SIP_HEADER|SIP_HEADERS|SMDI_MSG|SMDI_MSG_RETRIEVE|SORT|SPEECH|SPEECH_ENGINE|SPEECH_GRAMMAR|SPEECH_RESULTS_TYPE|SPEECH_SCORE|SPEECH_TEXT|SPRINTF|SQL_ESC|SQL_ESC_BACKSLASHES|SRVQUERY|SRVRESULT|STACK_PEEK|STAT|STIR_SHAKEN|STRBETWEEN|STRFTIME|STRPTIME|STRREPLACE|SYSINFO|TALK_DETECT|TESTTIME|TIMEOUT|TOLOWER|TONE_DETECT|TOUPPER|TRIM|TRYLOCK|TXTCIDNAME|UNLOCK|UNSHIFT|URIDECODE|URIENCODE|UUID|VALID_EXTEN|VARIABLE_EXISTS|VERSION|VMCOUNT|VM_INFO|VOLUME))(\()</string>
 				<key>beginCaptures</key>
 				<dict>
 					<key>1</key>
