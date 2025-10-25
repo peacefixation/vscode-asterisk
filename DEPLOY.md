@@ -10,10 +10,14 @@
 
 ## Publish
 
-https://code.visualstudio.com/api/working-with-extensions/publishing-extension
+Read the instructions:
 
-Install vsce: `npm install -g @vscode/vsce`
-Visit https://peacefixation.visualstudio.com
-Generate a Personal Access Token with scope "Marketplace: Manage"
-Run `vsce login peacefixation` and supply the token
-RUN `vsce publish`
+- https://code.visualstudio.com/api/working-with-extensions/publishing-extension
+
+Use `vsce` to publish the extension:
+
+- Install vsce: `npm install -g @vscode/vsce`  
+- Visit https://peacefixation.visualstudio.com  
+- Generate a Personal Access Token with scope "Marketplace: Manage"  
+- Run `vsce login peacefixation` and supply the token  
+- Run `vsce publish`
