@@ -2,8 +2,9 @@
     "name": "asterisksyntaxhighlighter",
     "displayName": "Asterisk Syntax Highlighter",
     "description": "Syntax highlighting for Asterisk dialplan",
-    "version": "1.1.4",
+    "version": "1.2.0",
     "publisher": "peacefixation",
+    "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.13.0"
     },

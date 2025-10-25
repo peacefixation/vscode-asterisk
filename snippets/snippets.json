@@ -9,7 +9,7 @@
     "Same": {
         "prefix": "s",
         "body": [
-            "same  => ${1:n},${2}(${3})"
+            "same => ${1:n},${2}(${3})"
         ],
         "description": "Same extension"
     },
@@ -23,7 +23,7 @@
     "SameNew": {
         "prefix": "sn",
         "body": [
-            " same = ${1:n},${2}(${3})"
+            "same = ${1:n},${2}(${3})"
         ],
         "description": "Same extension in new format"
     }

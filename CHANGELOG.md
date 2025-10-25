@@ -4,6 +4,14 @@ All notable changes to the "asterisksyntaxhighlighter" extension will be documen
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025/09/22
+- Added block comment support
+- Application & function patterns are now case-insensitive 
+- Application & function patterns now include those from Asterisk 16 to 22   
+- Added syntax highlighting for module configuration
+- Fixed syntax highlighting for variable assignment with space before equals
+- Added syntax highlighting for `tryinclude` and `exec`
+
 ## [1.1.4] - 2021/02/09
 - Ignore escaped quotes in quoted string match
 
