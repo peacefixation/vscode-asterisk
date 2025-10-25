@@ -12,8 +12,8 @@
 
 https://code.visualstudio.com/api/working-with-extensions/publishing-extension
 
-Install vsce: `npm install -g vsce`  
-Visit https://dev.azure.com/peacefixation  
-Generate a Personal Access Token with scope "Marketplace: Manage"  
-Run `vsce login peacefixation` and supply the token  
-RUN `vsce publish`  
+Install vsce: `npm install -g @vscode/vsce`
+Visit https://peacefixation.visualstudio.com
+Generate a Personal Access Token with scope "Marketplace: Manage"
+Run `vsce login peacefixation` and supply the token
+RUN `vsce publish`
